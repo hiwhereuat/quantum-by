@@ -113,3 +113,53 @@ if (burgerBtn && mainNav) {
         });
     });
 }
+
+const form = document.getElementById('footerForm');
+const successMsg = document.getElementById('form-success');
+const submitBtn = document.getElementById('submitBtn');
+
+if (form) {
+    const serviceID = 'service_im6cqkc';
+    const templateID = 'template_79n07im';
+    const publicKey = 'TJb_edokz9sSGUw4y';
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        submitBtn.textContent = 'ОТПРАВКА...';
+        submitBtn.disabled = true;
+
+        const templateParams = {
+            user_name: form.elements.user_name.value,
+            user_phone: form.elements.user_phone.value,
+            message: form.elements.message.value
+        };
+
+        fetch('https://api.emailjs.com/api/v1.0/email/send', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                service_id: serviceID,
+                template_id: templateID,
+                user_id: publicKey,
+                template_params: templateParams
+            })
+        })
+        .then(res => {
+            if (res.ok) {
+                form.reset();
+                successMsg.style.display = 'block';
+                setTimeout(() => { successMsg.style.display = 'none'; }, 5000);
+            } else {
+                alert('Произошла ошибка. Попробуйте позже.');
+            }
+        })
+        .catch(err => {
+            alert('Ошибка соединения: ' + err);
+        })
+        .finally(() => {
+            submitBtn.textContent = 'ОТПРАВИТЬ СООБЩЕНИЕ';
+            submitBtn.disabled = false;
+        });
+    });
+}

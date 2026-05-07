@@ -269,11 +269,12 @@ body { font-family: 'Onest', sans-serif; color: var(--black); line-height: 1.6; 
     flex-direction: column;
     position: relative;
     overflow: hidden;
+    justify-content: center;
 }
 .info-content-layer { position: relative; z-index: 2; width: 100%; }
-.info-block { padding: 25px 0; }
+.info-block { padding: 30px 0;  }
 .info-label { display: block; font-size: 0.8rem; text-transform: uppercase; color: #777; margin-bottom: 10px; }
-.info-value { display: block; font-size: 1.6rem; font-weight: 500; margin-bottom: 10px; }
+.info-value { display: block; font-size: 1.8rem; font-weight: 500; margin-bottom: 10px;  }
 .info-link { color: var(--primary); text-decoration: none; border-bottom: 1px solid transparent; transition: var(--transition); }
 .info-link:hover { border-color: var(--primary); }
 .info-divider { height: 1px; background: rgba(255, 255, 255, 0.1); width: 100%; }
@@ -417,4 +418,13 @@ body { font-family: 'Onest', sans-serif; color: var(--black); line-height: 1.6; 
     .hero h1 { font-size: 1.8rem; }
     .contacts-header h2 { font-size: 2rem; }
     .hero-logo { width: 90px; margin-bottom: 8px; }
+}
+
+.form-success {
+    color: #28a745;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 15px;
+    font-size: 0.95rem;
+    display: none;
 }
