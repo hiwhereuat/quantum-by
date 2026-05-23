@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Услуги ООО Квантум Бай — укладка тротуарной плитки, фасадные работы, строительство домов, сантехнические услуги, кладка блоков, штукатурные работы, благоустройство территории.">
+    <meta name="keywords" content="Квантум Бай, укладка тротуарной плитки Минск, фасадные работы цена, строительство домов под ключ, сантехнические услуги, кладка блоков, штукатурные работы цена, благоустройство территории, ремонт Хатежино">
+    <title>Услуги | Квантум Бай</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Onest:wght@300;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        .nav a.active {
+            color: var(--primary);
+        }
+
+        .services-hero {
+            height: 50vh;
+            min-height: 420px;
+            position: relative;
+            background: #0f0f0f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-align: center;
+            padding-top: 80px;
+        }
+        .services-hero h1 {
+            font-size: 3rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.15;
+        }
+        .services-hero p {
+            color: #aaa;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .services-page-section {
+            padding: 100px 0;
+            background: var(--black);
+            color: #fff;
+        }
+        .services-page-section .section-title {
+            margin-bottom: 60px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .service-detail-card {
+            background: #252525;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+        .service-detail-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(255, 140, 0, 0.2);
+            border-color: rgba(255, 140, 0, 0.15);
+        }
+
+        .card-img-wrapper {
+            position: relative;
+            width: 100%;
+            height: 230px;
+            overflow: hidden;
+            background: #1a1a1a;
+        }
+        .card-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .service-detail-card:hover .card-img-wrapper img {
+            transform: scale(1.05);
+        }
+        .card-number {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 140, 0, 0.9);
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        .card-body {
+            padding: 28px 30px 30px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+        .card-body h3 {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        .card-body p {
+            color: #bbb;
+            font-size: 0.95rem;
+            line-height: 1.65;
+            flex: 1;
+            margin-bottom: 24px;
+        }
+
+        .card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .card-price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1;
+        }
+        .card-price span {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #666;
+            margin-top: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .btn-card {
+            display: inline-block;
+            padding: 10px 22px;
+            border: 2px solid var(--primary);
+            border-radius: 4px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+        .btn-card:hover {
+            background: var(--primary);
+            color: #fff;
+            transform: translateY(-1px);
+        }
+
+        /* Центрирование последней карточки, если она одна в ряду */
+        .grid-3 .service-detail-card:last-child:nth-child(3n - 1) {
+            grid-column: 2 / 3;
+        }
+
+        .back-section {
+            padding: 80px 0 100px;
+            background: var(--black);
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .back-section p {
+            color: #777;
+            margin-bottom: 25px;
+            font-size: 1.05rem;
+        }
+        .btn-back {
+            display: inline-block;
+            padding: 14px 40px;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        .btn-back:hover {
+            background: #e67e00;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 140, 0, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .services-hero {
+                height: 40vh;
+                min-height: 340px;
+            }
+            .services-hero h1 {
+                font-size: 2rem;
+            }
+            .grid-3 {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .grid-3 .service-detail-card:last-child:nth-child(3n - 1) {
+                grid-column: auto;
+            }
+            .card-footer {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 16px;
+            }
+            .btn-card {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .services-hero h1 {
+                font-size: 1.7rem;
+            }
+            .services-hero p {
+                font-size: 0.95rem;
+            }
+            .card-body {
+                padding: 22px 20px 24px;
+            }
+            .card-img-wrapper {
+                height: 190px;
+            }
+            .services-page-section {
+                padding: 60px 0;
+            }
+            .back-section {
+                padding: 60px 0 80px;
+            }
+        }
+    </style>
+</head>
+<body id="top">
+
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=109299223', 'ym');
+
+    ym(109299223, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/109299223" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+
+<header class="header">
+    <div class="container">
+        <a href="index.html" class="logo">КВАНТУМ <span>БАЙ</span></a>
+
+        <nav class="nav" id="mainNav">
+            <a href="services.html" class="active">Услуги</a>
+            <a href="index.html#about">О нас</a>
+            <a href="index.html#contacts">Контакты</a>
+            <a href="tel:+375295729932" class="mobile-phone">+375 (29) 572-99-32</a>
+        </nav>
+
+        <div class="header-right">
+            <a href="tel:+375295729932" class="phone desktop-phone">+375 (29) 572-99-32</a>
+            <button class="burger" id="burgerBtn" aria-label="Меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<section class="services-hero">
+    <div id="particles-js"></div>
+    <div class="container">
+        <div class="hero-content">
+            <h1>Наши услуги и цены</h1>
+            <p>Комплексные строительные решения с прозрачным ценообразованием. Выберите интересующее направление.</p>
+        </div>
+    </div>
+</section>
+
+<section class="services-page-section">
+    <div class="container">
+        <h2 class="section-title">Основные направления</h2>
+
+        <div class="grid-3">
+
+            <div class="service-detail-card">
+                <div class="card-img-wrapper">
+                    <span class="card-number">01</span>
+                    <img src="img/services/trotuar.png" alt="Укладка тротуарной плитки">
+                </div>
+                <div class="card-body">
+                    <h3>Укладка тротуарной плитки</h3>
+                    <p>Профессиональная укладка тротуарной плитки с подготовкой основания, установкой бордюров и качественным уплотнением. Долговечное покрытие для дорожек, площадок и парковок.</p>
+                    <div class="card-footer">
+                        <div class="card-price">35 BYN</div>
+                        <a href="index.html#contacts" class="btn-card">Заказать</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-detail-card">
+                <div class="card-img-wrapper">
+                    <span class="card-number">02</span>
+                    <img src="img/services/fasad.png" alt="Фасадные работы">
+                </div>
+                <div class="card-body">
+                    <h3>Фасадные работы</h3>
+                    <p>Комплексные фасадные работы: утепление, штукатурка, покраска и декоративная отделка. Защита и преображение exterior вашего здания.</p>
+                    <div class="card-footer">
+                        <div class="card-price">50 BYN</div>
+                        <a href="index.html#contacts" class="btn-card">Заказать</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-detail-card">
+                <div class="card-img-wrapper">
+                    <span class="card-number">03</span>
+                    <img src="img/services/dom.png" alt="Строительство домов под ключ">
+                </div>
+                <div class="card-body">
+                    <h3>Строительство домов под ключ</h3>
+                    <p>Строительство домов от фундамента до финишной отделки. Полный цикл работ с соблюдением технологий, норм и согласованных сроков.</p>
+                    <div class="card-footer">
+                        <div class="card-price">1100 BYN</div>
+                        <a href="index.html#contacts" class="btn-card">Заказать</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-detail-card">
+                <div class="card-img-wrapper">
+                    <span class="card-number">04</span>
+                    <img src="img/services/santehnika.png" alt="Сантехнические услуги под ключ">
+                </div>
+                <div class="card-body">
+                    <h3>Сантехнические услуги под ключ</h3>
+                    <p>Монтаж систем водоснабжения, канализации и отопления. Установка сантехнического оборудования любой сложности с гарантией.</p>
+                    <div class="card-footer">
+                        <div class="card-price">45 BYN</div>
+                        <a href="index.html#contacts" class="btn-card">Заказать</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-detail-card">
+                <div class="card-img-wrapper">
+                    <span class="card-number">05</span>
+                    <img src="img/services/bloki.png" alt="Кладка блоков">
+                </div>
+                <div class="card-body">
+                    <h3>Кладка блоков</h3>
+                    <p>Возведение стен из газобетонных, пенобетонных и керамических блоков. Точная геометрия и надежная конструкция.</p>
+                    <div class="card-footer">
+                        <div class="card-price">48 BYN</div>
+                        <a href="index.html#contacts" class="btn-card">Заказать</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-detail-card">
+                <div class="card-img-wrapper">
+                    <span class="card-number">06</span>
+                    <img src="img/services/shtukaturka.png" alt="Штукатурные работы">
+                </div>
+                <div class="card-body">
+                    <h3>Штукатурные работы</h3>
+                    <p>Машинная и ручная штукатурка стен и потолков. Идеально ровные поверхности под дальнейшую финишную отделку.</p>
+                    <div class="card-footer">
+                        <div class="card-price">20 BYN</div>
+                        <a href="index.html#contacts" class="btn-card">Заказать</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-detail-card">
+                <div class="card-img-wrapper">
+                    <span class="card-number">07</span>
+                    <img src="img/services/blagoustroystvo.png" alt="Благоустройство территории">
+                </div>
+                <div class="card-body">
+                    <h3>Благоустройство территории</h3>
+                    <p>Комплексное благоустройство: планирование участка, озеленение, устройство дорожек, монтаж освещения и установка малых архитектурных форм.</p>
+                    <div class="card-footer">
+                        <div class="card-price">? BYN</div>
+                        <a href="index.html#contacts" class="btn-card">Заказать</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="back-section">
+    <div class="container">
+        <p>Хотите узнать больше о компании или обсудить проект?</p>
+        <a href="index.html" class="btn-back">Вернуться на главную</a>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container footer-inner">
+        <p class="footer-name">ООО «Квантум Бай»</p>
+        <p class="footer-unp">УНП: 693422063</p>
+        <p class="footer-address">Юридический адрес: Минский р-н, аг. Хатежино, ул.Центральная 18Б, корп.1, пом.51</p>
+        <p class="footer-copy">&copy; 2026 Все права защищены</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script>
+    particlesJS("particles-js", {
+        "particles": {
+            "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+            "color": { "value": "#FF8C00" },
+            "shape": { "type": "circle" },
+            "opacity": { "value": 0.5 },
+            "size": { "value": 3, "random": true },
+            "line_linked": { "enable": false },
+            "move": { "enable": true, "speed": 2 }
+        },
+        "interactivity": {
+            "detect_on": "window",
+            "events": { "onhover": { "enable": true, "mode": "bubble" } },
+            "modes": { "bubble": { "distance": 200, "size": 0, "duration": 2, "opacity": 0 } }
+        },
+        "retina_detect": true
+    });
+
+    const burgerBtn = document.getElementById('burgerBtn');
+    const mainNav = document.getElementById('mainNav');
+    const headerEl = document.querySelector('.header');
+
+    if (burgerBtn && mainNav) {
+        const toggleMenu = (isOpening) => {
+            const scrollWidth = window.innerWidth - document.documentElement.clientWidth;
+
+            if (isOpening) {
+                burgerBtn.classList.add('active');
+                mainNav.classList.add('open');
+                document.body.style.overflow = 'hidden';
+                document.body.style.paddingRight = scrollWidth + 'px';
+                if (headerEl) headerEl.style.paddingRight = scrollWidth + 'px';
+            } else {
+                burgerBtn.classList.remove('active');
+                mainNav.classList.remove('open');
+                setTimeout(() => {
+                    document.body.style.overflow = '';
+                    document.body.style.paddingRight = '';
+                    if (headerEl) headerEl.style.paddingRight = '';
+                }, 400);
+            }
+        };
+
+        burgerBtn.addEventListener('click', () => {
+            const isOpen = mainNav.classList.contains('open');
+            toggleMenu(!isOpen);
+        });
+
+        mainNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                toggleMenu(false);
+            });
+        });
+    }
+</script>
+</body>
+</html>
