@@ -39,6 +39,24 @@ particlesJS("particles-contacts", {
     "retina_detect": true
 });
 
+particlesJS("particles-gallery", {
+    "particles": {
+        "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+        "color": { "value": "#FF8C00" },
+        "shape": { "type": "circle" },
+        "opacity": { "value": 0.5 },
+        "size": { "value": 3, "random": true },
+        "line_linked": { "enable": false },
+        "move": { "enable": true, "speed": 2 }
+    },
+    "interactivity": {
+        "detect_on": "window",
+        "events": { "onhover": { "enable": true, "mode": "bubble" } },
+        "modes": { "bubble": { "distance": 200, "size": 0, "duration": 2, "opacity": 0 } }
+    },
+    "retina_detect": true
+});
+
 let slideIndex = 0;
 let slideTimer;
 const slides = document.querySelectorAll('.slide');
@@ -75,6 +93,38 @@ if (slides.length > 0) {
     };
 
     showSlide(0);
+}
+
+const gallerySlides = document.querySelectorAll('.gallery-slide');
+const galleryPrevBtn = document.getElementById('galleryPrev');
+const galleryNextBtn = document.getElementById('galleryNext');
+
+if (gallerySlides.length > 0 && galleryPrevBtn && galleryNextBtn) {
+    let gIndex = 0;
+    const gMax = gallerySlides.length - 1;
+
+    function showGallerySlide(n) {
+        // Убираем активный класс у всех
+        gallerySlides.forEach(slide => slide.classList.remove('active'));
+
+        // Зацикливание (последняя -> первая, первая -> последняя)
+        if (n >= gallerySlides.length) gIndex = 0;
+        else if (n < 0) gIndex = gMax;
+        else gIndex = n;
+
+        // Показываем нужное фото
+        gallerySlides[gIndex].classList.add('active');
+    }
+
+    galleryNextBtn.addEventListener('click', () => {
+        showGallerySlide(gIndex + 1);
+    });
+
+    galleryPrevBtn.addEventListener('click', () => {
+        showGallerySlide(gIndex - 1);
+    });
+
+    showGallerySlide(0);
 }
 
 const burgerBtn = document.getElementById('burgerBtn');
